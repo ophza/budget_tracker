@@ -14,3 +14,13 @@ const urlsToCache = [
    "https://cdn.jsdelivr.net/npm/chart.js@2.8.0",
    "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
 ]
+
+self.addEventListener("install", (event) => {
+   event.waitUntil(
+      chaches.open(CACHE_NAME)
+         .then((cache) => {
+            console.log("Opened cache");
+            return cache.addAll(urlsToCache);
+      })
+   );
+});
