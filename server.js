@@ -14,7 +14,7 @@ app.use(compression());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.use(express.static(__dirname + "./public"));
+app.use(express.static(__dirname + "/public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
   useNewUrlParser: true,
@@ -27,7 +27,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/budget", {
 app.use(require("./routes/api.js"));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname + "./public/index.html"))
+  res.sendFile(path.join(__dirname + "/public/index.html"))
 })
 
 app.listen(PORT, () => {
